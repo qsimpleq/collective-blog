@@ -1,4 +1,4 @@
-.PHONY: setup dev erb2slim lint lint-rubocop lint-slim-lint test
+.PHONY: setup dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-lint lint-test
 
 setup:
 	bundle install
@@ -11,7 +11,7 @@ dev:
 erb2slim:
 	bundle exec erb2slim app/views/ -d --trace
 
-lint: lint-rubocop lint-slim-lint
+lint: lint-rubocop lint-templates
 
 lint-rubocop:
 	bundle exec rubocop
@@ -19,11 +19,16 @@ lint-rubocop:
 lint-rubocop-fix:
 	bundle exec rubocop -a
 
-lint-rubocop-fixA:
+lint-rubocop-fiX:
 	bundle exec rubocop -A
 
-lint-slim-lint:
+lint-templates:
 	bundle exec slim-lint app/views/
 
 test:
 	bundle exec rake test
+
+lint-test: lint test
+test-lint: test lint
+
+git-precommit-check: setup test lint
