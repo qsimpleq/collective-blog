@@ -3,6 +3,7 @@ require:
   - rubocop-minitest
   - rubocop-rails
   - rubocop-rake
+  - rubocop-slim
 
 AllCops:
   NewCops: enable
@@ -10,6 +11,8 @@ AllCops:
 
 Layout/LineLength:
   Max: 120
+  AllowedPatterns:
+    - '\s*# .+'
 Metrics/MethodLength:
   Enabled: false
 Style/AsciiComments:
