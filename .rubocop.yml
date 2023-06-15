@@ -8,6 +8,12 @@ require:
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2
+  Exclude:
+    - 'bin/{bundle,dev,rails,rake,setup}'
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'script/**/*'
 
 Layout/LineLength:
   Max: 120
