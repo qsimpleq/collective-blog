@@ -77,7 +77,7 @@ end
 group :development do
   # Adds model attributes/routes to top of model files/routes file
   gem 'annotate'
-
+  gem 'rubocop', '~> 1.50', require: false
   gem 'rubocop-capybara', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-rails', require: false
