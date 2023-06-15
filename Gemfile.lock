@@ -177,7 +177,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pg (1.5.3)
+    pg (1.4.6)
     power_assert (2.0.3)
     public_suffix (5.0.1)
     puma (5.6.5)
@@ -225,7 +225,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
-    rubocop (1.50.2)
+    rubocop (1.52.1)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.2.3)
@@ -241,7 +241,7 @@ GEM
       rubocop (~> 1.41)
     rubocop-minitest (0.31.0)
       rubocop (>= 1.39, < 2.0)
-    rubocop-rails (2.19.1)
+    rubocop-rails (2.18.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -256,10 +256,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sentry-rails (5.9.0)
+    sentry-rails (5.8.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.9.0)
-    sentry-ruby (5.9.0)
+      sentry-ruby (~> 5.8.0)
+    sentry-ruby (5.8.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
     slim (5.1.1)
       temple (~> 0.10.0)
@@ -337,7 +337,6 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.5)
-  rubocop (~> 1.50)
   rubocop-capybara
   rubocop-minitest
   rubocop-rails
