@@ -1,3 +1,5 @@
+.PHONY: setup dev lint lint-rubocop lint-slim-lint test
+
 setup:
 	bundle install
 	yarn install
@@ -13,3 +15,6 @@ lint-rubocop:
 
 lint-slim-lint:
 	bundle exec slim-lint app/views/
+
+test:
+	bundle exec rake test
