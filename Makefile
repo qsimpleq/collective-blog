@@ -6,10 +6,10 @@ setup:
 dev:
 	bundle exec rails server
 
-lint: lint-ruby	lint-templates
+lint: lint-rubocop	lint-slim-lint
 
-lint-ruby:
+lint-rubocop:
 	bundle exec rubocop -a
 
-lint-templates:
+lint-slim-lint:
 	bundle exec slim-lint app/views/
