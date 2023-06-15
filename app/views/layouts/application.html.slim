@@ -9,7 +9,14 @@ html
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
   body
-    = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-primary rounded-pill'
+    p
+      = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-primary rounded-pill'
+      = link_to 'Log In', user_registration_path, \
+        class: 'btn btn-lg btn-primary rounded-pill', \
+        data: { turbo_method: :patch }
+      = link_to 'Sign Out', destroy_user_session_path, \
+          class: 'btn btn-lg btn-primary rounded-pill', \
+          data: { turbo_method: :delete }
     = yield
   p.notice
     = notice
