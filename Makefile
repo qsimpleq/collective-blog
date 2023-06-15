@@ -1,4 +1,4 @@
-.PHONY: setup dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-lint lint-test
+.PHONY: setup deploy-railway-app dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-lint lint-test
 
 setup:
 	bundle install
@@ -32,3 +32,7 @@ lint-test: lint test
 test-lint: test lint
 
 git-precommit-check: setup test lint
+
+deploy-railway-app: git-precommit-check
+	railway up
+	railway run rails db:create db:migrate
