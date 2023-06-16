@@ -13,6 +13,7 @@ AllCops:
     - 'db/schema.rb'
     - 'config/**/*'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'lib/templates/slim/scaffold/_form.html.slim'
     - 'script/**/*'
 
 Layout/LineLength:
