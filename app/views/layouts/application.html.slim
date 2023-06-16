@@ -8,17 +8,12 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  body
-    p
-      = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-lg btn-primary rounded-pill'
-      = link_to 'Log In', user_registration_path, \
-        class: 'btn btn-lg btn-primary rounded-pill', \
-        data: { turbo_method: :patch }
-      = link_to 'Sign Out', destroy_user_session_path, \
-          class: 'btn btn-lg btn-primary rounded-pill', \
-          data: { turbo_method: :delete }
-    = yield
-  p.notice
-    = notice
-  p.alert
-    = alert
+
+  body.d-flex.flex-column.h-100
+    = render 'layouts/shared/header'
+    = render 'layouts/shared/footer'
+    = render 'layouts/shared/flash'
+
+    main.flex-shrink-0
+      .container[style="padding: 70px 0 0;"]
+        = yield
