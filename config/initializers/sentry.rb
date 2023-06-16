@@ -10,4 +10,4 @@ Sentry.init do |config|
   config.traces_sampler = lambda do |_context|
     true
   end
-end
+end if ENV['RAILS_ENV'] == 'production'
