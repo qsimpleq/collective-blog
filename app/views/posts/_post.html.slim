@@ -1,13 +1,6 @@
 div id="#{dom_id post}"
   p
-    strong Title:
-    =< post.title
-  p
-    strong Body:
-    =< post.body
-  p
-    strong Category:
-    =< post.category_id
-  p
-    strong Creator:
-    =< post.creator_id
+    strong =< link_to post.title.capitalize, post
+  p =< "[#{post.category.name}]"
+  p = post.body
+  p = post.creator.email
