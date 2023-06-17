@@ -15,6 +15,9 @@ header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
 
     .collapse.navbar-collapse[id="navbarCollapse"]
       ul.navbar-nav.me-auto.mb-2.mb-md-0
+        - if user_signed_in?
+          li.active
+            = link_to 'Categories', categories_path
 
       form.d-flex
         .btn-group[role="group" aria-label="Login group"]
