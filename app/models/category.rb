@@ -12,7 +12,7 @@
 #  unique_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :name, uniqueness: true
 end
