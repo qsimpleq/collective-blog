@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module RailsProject64
   class Application < Rails::Application
+    config.app_name = 'Rails Project 64'
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

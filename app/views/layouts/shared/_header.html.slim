@@ -1,6 +1,7 @@
 header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
   .container-fluid
-    a.navbar-brand href="#" Fixed navbar
+    a.navbar-brand href = root_path
+      = image_tag('hexlet_logo.jpg', width: 30)
     / Кнопка мобильного меню
     button.navbar-toggler[
     type="button"
@@ -14,8 +15,6 @@ header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
 
     .collapse.navbar-collapse[id="navbarCollapse"]
       ul.navbar-nav.me-auto.mb-2.mb-md-0
-        li.nav-item
-          = link_to 'Home', root_path, class: 'nav-link active'
 
       form.d-flex
         .btn-group[role="group" aria-label="Login group"]
