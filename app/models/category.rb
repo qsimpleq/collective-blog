@@ -12,5 +12,7 @@
 #  unique_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
+  has_many :posts
+
   validates :name, uniqueness: true
 end

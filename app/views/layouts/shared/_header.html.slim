@@ -20,6 +20,7 @@ header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
       form.d-flex
         .btn-group[role="group" aria-label="Login group"]
           - if user_signed_in?
+            = link_to 'New post', new_post_path, class: 'btn btn-primary'
             span.button.btn.btn-outline-success.disabled = current_user.email
             = link_to 'Sign Out', destroy_user_session_path, \
                                   class: 'btn btn-outline-danger', \
