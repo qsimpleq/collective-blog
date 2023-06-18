@@ -30,4 +30,43 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_name: "Collective blog"
+  layouts:
+    shared:
+      header:
+        categories: Categories
+        log_in: Log In
+        log_out: Logout
+        login_group: Login group
+        new_post: New post
+        sign_up: Sign up
+        toggle_navigation: Toggle navigation
+  categories:
+    index:
+      page_title: Categories
+    create:
+      success: Category was created.
+    new:
+      title: New Category
+    update:
+      success: Category was updated.
+    destroy:
+      success: Category was destroyed.
+  posts:
+    post:
+      post_link: Post link
+    index:
+      page_title: Posts
+    edit:
+      title: Edit Post
+    create:
+      success: Post was created.
+    new:
+      title: New Post
+    update:
+      success: Post was updated.
+    destroy:
+      success: Post was destroyed.
+    show:
+      body: Body
+      comments: Comments

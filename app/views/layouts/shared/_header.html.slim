@@ -9,7 +9,7 @@ header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
     data-bs-target="#navbarCollapse"
     aria-controls="navbarCollapse"
     aria-expanded="false"
-    aria-label="Toggle navigation"
+    aria-label="#{t('.toggle_navigation')}"
     ]
       span.navbar-toggler-icon
 
@@ -17,23 +17,26 @@ header.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
       ul.navbar-nav.me-auto.mb-2.mb-md-0
         - if user_signed_in?
           li.active
-            = link_to 'Categories', categories_path
+            = link_to t('.categories'), categories_path
 
       form.d-flex
-        .btn-group[role="group" aria-label="Login group"]
+        .btn-group[role="group" aria-label="#{t('.login_group')}"]
           - if user_signed_in?
-            = link_to 'New post', new_post_path, class: 'btn btn-primary'
+            = link_to t('.new_post'), new_post_path, \
+                                      class: 'btn btn-primary', \
+                                      'aria-label': t('.new_post')
             span.button.btn.btn-outline-success.disabled = current_user.email
-            = link_to 'Sign Out', destroy_user_session_path, \
-                                  class: 'btn btn-outline-danger', \
-                                  title: 'Popover title', \
-                                  data: { turbo_method: :delete }, \
-                                  'data-bs-content': 'Amazing content, right ?', \
-                                  'data-bs-toggle': 'popover'
+            = link_to t('.log_out'), destroy_user_session_path, \
+                                     class: 'btn btn-outline-danger', \
+                                     data: { turbo_method: :delete }, \
+                                     'aria-label': t('.log_out')
           - else
             - unless current_page?(new_user_registration_path)
-              = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'
+              = link_to t('.sign_up'), new_user_registration_path, \
+                                       class: 'btn btn-primary', \
+                                       'aria-label': t('.sign_up')
             - unless current_page?(new_user_session_path)
-              = link_to 'Log In', user_registration_path, \
-                                  class: 'btn btn-success', \
-                                  data: { turbo_method: :patch }
+              = link_to t('.log_in'), user_registration_path, \
+                                      class: 'btn btn-success', \
+                                      data: { turbo_method: :patch }, \
+                                      'aria-label': t('.log_in')

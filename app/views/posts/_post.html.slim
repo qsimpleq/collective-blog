@@ -1,6 +1,6 @@
 div id="#{dom_id post}"
   p
-    strong =< link_to post.title.capitalize, post
+    strong =< link_to post.title.capitalize, post, 'aria-label': t('.post_link')
   p =< "[#{post.category.name}]"
   p = post.body
   p = post.creator.email

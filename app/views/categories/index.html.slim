@@ -1,6 +1,6 @@
 p style="color: green" = notice
 
-h1 Categories
+h1 = t('.page_title')
 
 #categories
   p = link_to 'New category', new_category_path
@@ -9,4 +9,3 @@ h1 Categories
     == render category
     p
       = link_to 'Show this category', category
-
