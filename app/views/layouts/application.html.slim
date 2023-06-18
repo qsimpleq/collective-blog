@@ -12,8 +12,7 @@ html
   body.d-flex.flex-column.h-100
     = render 'layouts/shared/header'
     = render 'layouts/shared/footer'
-    = render 'layouts/shared/flash'
 
     main.flex-shrink-0
-      .container[style="padding: 0 0 70px 0;"]
+      .container
         = yield
