@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @post = posts(:one)
+    get '/users/sign_in'
+    sign_in(users(:one))
   end
 
   test 'should get index' do
@@ -12,7 +16,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    get new_post_url
+    get new_post_url(Post.new)
 
     assert_response :success
   end

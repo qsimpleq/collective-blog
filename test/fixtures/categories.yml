@@ -13,7 +13,9 @@
 #
 
 one:
-  name: MyString
+  id: 1
+  name: one
 
 two:
-  name: MyString
+  id: 2
+  name: two
