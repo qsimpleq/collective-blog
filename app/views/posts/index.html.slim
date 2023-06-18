@@ -3,6 +3,6 @@ p style="color: green" = notice
 h1 = t('.page_title')
 
 #posts
-  - @posts.each do |post|
-    hr
-    == render post
+  .row
+    - @posts.each do |post|
+      == render post
