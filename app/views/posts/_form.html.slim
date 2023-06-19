@@ -9,4 +9,4 @@
     = f.association :creator, as: :hidden, input_html: { value: current_user.id }
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-' + action_method_to_css_class_color

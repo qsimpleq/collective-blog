@@ -53,12 +53,15 @@ en:
     destroy:
       success: Category was destroyed.
   posts:
+    post_header:
+      title: All posts
     post:
       post_link: Post link
     index:
       page_title: Posts
     edit:
       title: Edit Post
+      show_post: Show post
     create:
       success: Post was created.
     new:
@@ -70,3 +73,5 @@ en:
     show:
       body: Body
       comments: Comments
+      edit: Edit
+      delete: Delete

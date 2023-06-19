@@ -1,10 +1,8 @@
 p style="color: green" = notice
 
+== render 'post_header', post: @post
 == render @post
 
-div
-  => link_to 'Edit this post', edit_post_path(@post)
-  '|
-  =< link_to 'Back to posts', posts_path
-
-  = button_to 'Destroy this post', @post, method: :delete
+.btn-group
+  = link_to t('.edit'), edit_post_path(@post), class: "btn btn-primary"
+  = link_to t('.delete'), post_path(@post), class: "btn btn-danger", data: { turbo_method: :delete }
