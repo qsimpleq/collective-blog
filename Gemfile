@@ -6,6 +6,9 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.5'
 
+# Ancestry allows rails ActiveRecord models to be organized as a tree structure (or hierarchy).
+gem 'ancestry'
+
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise', '~> 4.9'
 
