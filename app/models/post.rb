@@ -26,4 +26,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :body, presence: true, length: { minimum: 3 }
+
+  def datetime_humanized(datetime)
+    time_ago_in_words(Time.now - datetime)
+  end
 end
