@@ -1,5 +1,5 @@
 h4
   => link_to t('.title'), posts_path
-  - if @post.category&.name&.humanize
+  - if @post&.category&.name&.humanize
     |/
     =< @post.category.name.humanize

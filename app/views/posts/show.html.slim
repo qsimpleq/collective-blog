@@ -6,3 +6,9 @@ p style="color: green" = notice
 .btn-group
   = link_to t('.edit'), edit_post_path(@post), class: "btn btn-primary"
   = link_to t('.delete'), post_path(@post), class: "btn btn-danger", data: { turbo_method: :delete }
+
+.lead.mt-3
+  span Comments
+  - new_comment = @post.post_comments.new(post_id: @post.id, user_id: current_user.id)
+  == render partial: 'comments/form', locals: { comment: new_comment }
+  == render(partial: 'comments/comment', collection: @root_comments)

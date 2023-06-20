@@ -52,6 +52,9 @@ en:
       success: Category was updated.
     destroy:
       success: Category was destroyed.
+  comments:
+    create:
+      success: Comment was created.
   posts:
     post_header:
       title: All posts

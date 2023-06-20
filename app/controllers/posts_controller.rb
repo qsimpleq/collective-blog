@@ -7,7 +7,9 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show; end
+  def show
+    @root_comments = @post.post_comments.roots.order('created_at DESC')
+  end
 
   # GET /posts/new
   def new

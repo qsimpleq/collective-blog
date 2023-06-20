@@ -23,11 +23,8 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :creator, class_name: 'User'
+  has_many :post_comments
 
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :body, presence: true, length: { minimum: 3 }
-
-  def datetime_humanized(datetime)
-    time_ago_in_words(Time.now - datetime)
-  end
 end

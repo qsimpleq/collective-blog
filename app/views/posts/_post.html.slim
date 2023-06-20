@@ -7,4 +7,7 @@
         =< "#{post.category.name}"
     .card-body
       p.card-text = post.body
-      .small.text-muted = post.creator.email
+      .small.text-muted
+        |> Понравилось:
+        =<> time_ago_in_words(post.created_at.to_time)
+        =<> post.creator.email

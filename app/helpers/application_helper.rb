@@ -1,6 +1,7 @@
 module ApplicationHelper
   def action_method_to_css_class_color(name = action_name)
-    if %w[new update].include?(name)
+    name = name.dup.downcase.to_s unless action_name == name
+    if %w[new update create].include?(name)
       'success'
     elsif %w[show edit index].include?(name)
       'primary'
@@ -9,5 +10,9 @@ module ApplicationHelper
     else
       'default'
     end
+  end
+
+  def datetime_humanized(datetime)
+    datetime.strftime("%e %B %Y, %H:%M")
   end
 end
