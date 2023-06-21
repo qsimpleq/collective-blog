@@ -22,11 +22,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  id: 1
   email: one@example.com
   encrypted_password: 'dsafi2h3u5h41234'
 
 two:
-  id: 2
   email: two@example.com
   encrypted_password: 'dsafi2h3uasdasf@5h41234'

@@ -13,9 +13,7 @@
 #
 
 one:
-  id: 1
   name: one
 
 two:
-  id: 2
   name: two

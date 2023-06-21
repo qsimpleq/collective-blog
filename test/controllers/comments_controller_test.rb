@@ -1,21 +1,24 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
-  test 'should get new' do
-    get comments_new_url
+
+  setup do
+    get '/users/sign_in'
+    @user_one = users(:one)
+    @post = posts(:one)
+    @comment = post_comments(:with_comments)
+
+    sign_in(@user_one)
+  end
+
+  test 'should create comment' do
+    pp post post_comments_url(@post), params: { post_comment: {
+      post_id: @post.id,
+      user_id: @user_one,
+      content: @comment.content,
+    } }
 
     assert_response :success
   end
 
-  test 'should get create' do
-    get comments_create_url
-
-    assert_response :success
-  end
-
-  test 'should get show' do
-    get comments_show_url
-
-    assert_response :success
-  end
 end
