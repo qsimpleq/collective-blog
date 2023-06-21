@@ -23,7 +23,7 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :creator, class_name: 'User'
-  has_many :post_comments
+  has_many :post_comments, dependent: :destroy
 
   validates :title, presence: true, length: { minimum: 3, maximum: 50 }
   validates :body, presence: true, length: { minimum: 3 }

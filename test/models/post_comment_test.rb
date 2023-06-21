@@ -21,7 +21,7 @@
 #  post_id  (post_id => posts.id)
 #  user_id  (user_id => users.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class PostCommentTest < ActiveSupport::TestCase
   # test "the truth" do

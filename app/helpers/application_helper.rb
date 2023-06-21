@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def datetime_humanized(datetime)
-    datetime.strftime("%e %B %Y, %H:%M")
+    datetime.strftime('%e %B %Y, %H:%M')
   end
 end

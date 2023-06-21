@@ -4,8 +4,8 @@ p style="color: green" = notice
 == render @post
 
 .btn-group
-  = link_to t('.edit'), edit_post_path(@post), class: "btn btn-primary"
-  = link_to t('.delete'), post_path(@post), class: "btn btn-danger", data: { turbo_method: :delete }
+  = link_to t('.edit'), edit_post_path(@post), class: 'btn btn-primary'
+  = link_to t('.delete'), post_path(@post), class: 'btn btn-danger', data: { turbo_method: :delete }
 
 .lead.mt-3
   span Comments

@@ -4,7 +4,7 @@
       => link_to post.title.capitalize, post, 'aria-label': t('.post_link')
       - if action_name == 'index'
         |/
-        =< "#{post.category.name}"
+        =< post.category.name.to_s
     .card-body
       p.card-text = post.body
       .small.text-muted
