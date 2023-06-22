@@ -1,9 +1,17 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_like, only: %i[show]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
+    @post_likes = {}
+    @posts.each do |post|
+      @post_likes[post.id] = {
+        count: post.post_likes.count,
+        liked: post.post_likes.where(user_id: current_user.id).first
+      }
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -55,6 +63,14 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: t('.success') }
       format.json { head :no_content }
     end
+  end
+
+  # protected
+
+  def set_like
+    @post_like = @post.post_likes.where(user_id: current_user.id).first
+    @post_like_count = @post.post_likes.count
+    Rails.logger.debug [@post_like, @post_like_count]
   end
 
   private

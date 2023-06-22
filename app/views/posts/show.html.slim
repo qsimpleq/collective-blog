@@ -1,7 +1,7 @@
 p style="color: green" = notice
 
 == render 'post_header', post: @post
-== render @post
+== render partial: 'post', locals: { post: @post, post_like: @post_like, post_like_count: @post_like_count }
 
 .btn-group
   = link_to t('.edit'), edit_post_path(@post), class: 'btn btn-primary'
