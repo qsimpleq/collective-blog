@@ -23,7 +23,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Post.count') do
       post posts_url,
            params: { post: { body: @post_one.body, category_id: @post_one.category_id, creator_id: @post_one.creator_id,
-                                 title: @post_one.title } }
+                             title: @post_one.title } }
     end
 
     assert_redirected_to post_url(Post.last)
@@ -44,7 +44,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should update post' do
     patch post_url(@post_one),
           params: { post: { body: @post_one.body, category_id: @post_one.category_id, creator_id: @post_one.creator_id,
-                                title: @post_one.title } }
+                            title: @post_one.title } }
 
     assert_redirected_to post_url(@post_one)
   end

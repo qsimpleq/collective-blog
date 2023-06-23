@@ -20,6 +20,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
         content: @comment_with_comments.content
       }
     }
+
     assert_response :redirect
     assert_redirected_to post_path(@post_one, anchor: "post_comment_#{PostComment.last.id}")
   end

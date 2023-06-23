@@ -26,5 +26,4 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
   end
-
 end
