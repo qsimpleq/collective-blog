@@ -3,7 +3,7 @@
 # Table name: post_comments
 #
 #  id         :integer          not null, primary key
-#  ancestry   :string
+#  ancestry   :string           default("/")
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

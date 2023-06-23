@@ -3,7 +3,7 @@
 # Table name: post_comments
 #
 #  id         :integer          not null, primary key
-#  ancestry   :string
+#  ancestry   :string           default("/")
 #  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -31,10 +31,10 @@ nested:
   content: commented comment
   user: one
   post: one
-  ancestry: <%= ActiveRecord::FixtureSet.identify(:with_comments) %>
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:with_comments) %>
 
 deep_nested:
   content: deep comment
   user: one
   post: one
-  ancestry: <%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>
+  ancestry: /<%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>
