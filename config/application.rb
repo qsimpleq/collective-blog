@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module RailsProject64
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     config.app_name = 'Rails Project 64'
 
     # Initialize configuration defaults for originally generated Rails version.

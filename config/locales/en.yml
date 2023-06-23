@@ -31,6 +31,21 @@
 
 en:
   app_name: "Collective blog"
+  activerecord:
+    attributes:
+      category:
+        name: Name
+      post:
+        title: Title
+        body: Body
+        category: Category
+      post_comment:
+        body: Body
+    models:
+      category: Category
+      post: Post
+      post_comment: Comment
+      post_like: Like
   layouts:
     shared:
       header:
@@ -44,14 +59,8 @@ en:
   categories:
     index:
       page_title: Categories
-    create:
-      success: Category was created.
     new:
       title: New Category
-    update:
-      success: Category was updated.
-    destroy:
-      success: Category was destroyed.
   comments:
     create:
       success: Comment was created.
@@ -65,14 +74,8 @@ en:
     edit:
       title: Edit Post
       show_post: Show post
-    create:
-      success: Post was created.
     new:
       title: New Post
-    update:
-      success: Post was updated.
-    destroy:
-      success: Post was destroyed.
     show:
       body: Body
       comments: Comments

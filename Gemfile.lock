@@ -344,6 +344,7 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.5)
+  responders (~> 3.1)
   rubocop-capybara
   rubocop-minitest
   rubocop-rails
