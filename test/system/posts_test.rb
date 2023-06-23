@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class PostsTest < ApplicationSystemTestCase
   setup do
-    @post = posts(:one)
+    @post_one = posts(:one)
   end
 
   test 'visiting the index' do
@@ -15,10 +15,10 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on 'New post'
 
-    fill_in 'Body', with: @post.body
-    fill_in 'Category', with: @post.category_id
-    fill_in 'Creator', with: @post.creator_id
-    fill_in 'Title', with: @post.title
+    fill_in 'Body', with: @post_one.body
+    fill_in 'Category', with: @post_one.category_id
+    fill_in 'Creator', with: @post_one.creator_id
+    fill_in 'Title', with: @post_one.title
     click_on 'Create Post'
 
     assert_text 'Post was successfully created'
@@ -26,13 +26,13 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test 'should update Post' do
-    visit post_url(@post)
+    visit post_url(@post_one)
     click_on 'Edit this post', match: :first
 
-    fill_in 'Body', with: @post.body
-    fill_in 'Category', with: @post.category_id
-    fill_in 'Creator', with: @post.creator_id
-    fill_in 'Title', with: @post.title
+    fill_in 'Body', with: @post_one.body
+    fill_in 'Category', with: @post_one.category_id
+    fill_in 'Creator', with: @post_one.creator_id
+    fill_in 'Title', with: @post_one.title
     click_on 'Update Post'
 
     assert_text 'Post was successfully updated'
@@ -40,7 +40,7 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Post' do
-    visit post_url(@post)
+    visit post_url(@post_one)
     click_on 'Destroy this post', match: :first
 
     assert_text 'Post was successfully destroyed'
