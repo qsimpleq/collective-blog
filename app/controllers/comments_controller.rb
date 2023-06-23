@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @comment = PostComment.new(comment_params)
     @comment.save
-    respond_with(@comment, location: post_path(@comment.post_id))
+    respond_with(@comment, location: post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"))
   end
 
   private

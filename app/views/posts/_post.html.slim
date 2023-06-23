@@ -1,10 +1,14 @@
 article.col-md-12
   .card.mb-3 id="#{dom_id post}"
     .card-header
-      => link_to post.title.capitalize, post, 'aria-label': t('.post_link')
       - if action_name == 'index'
+        => link_to post.title.capitalize, post, 'aria-label': t('.post_link')
         |/
         =< post.category.name.to_s
+      - else
+        span[
+          aria-label="#{t('.post_link')}"
+        ] = post.title.capitalize
     .card-body
       p.card-text = post.body
     .card-footer.d-flex.justify-content-between
