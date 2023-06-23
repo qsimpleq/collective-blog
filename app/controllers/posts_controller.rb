@@ -1,18 +1,10 @@
 class PostsController < ApplicationController
   responders :flash
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_like, only: %i[show]
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
-    @post_likes = {}
-    @posts.each do |post|
-      @post_likes[post.id] = {
-        count: post.post_likes.count,
-        liked: post.post_likes.where(user_id: current_user.id).first
-      }
-    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -45,13 +37,6 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_with(@post, location: posts_url)
-  end
-
-  protected
-
-  def set_like
-    @post_like = @post.post_likes.where(user_id: current_user.id).first
-    @post_like_count = @post.post_likes.count
   end
 
   private

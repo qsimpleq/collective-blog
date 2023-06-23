@@ -58,9 +58,19 @@ en:
         toggle_navigation: Toggle navigation
   categories:
     index:
-      page_title: Categories
+      title: Categories
+      new: New category
     new:
-      title: New Category
+      title: New category
+      back: Back
+    edit:
+      title: Edit category
+      back: Back
+    show:
+      title: Show category
+      back: Back
+      delete: Delete
+      delete_confirm: Are you sure
   comments:
     create:
       success: Comment was created.
@@ -68,12 +78,12 @@ en:
     post_header:
       title: All posts
     post:
-      post_link: Post link
+      link: Post link
     index:
-      page_title: Posts
+      title: Posts
     edit:
       title: Edit Post
-      show_post: Show post
+      show: Show post
     new:
       title: New Post
     show:

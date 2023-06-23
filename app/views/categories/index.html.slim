@@ -1,9 +1,9 @@
 p style="color: green" = notice
 
-h1 = t('.page_title')
+h1 = t('.title')
 
 #categories
-  p = link_to 'New category', new_category_path
+  p = link_to t('.new'), new_category_path
   hr
   - @categories.each do |category|
     == render category
