@@ -5,7 +5,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     get '/users/sign_in'
     @user_one = users(:one)
     @post_one = posts(:one)
-    @comment_with_comments = post_comments(:with_comments)
+    @comment_one = post_comments(:one)
     @comment_nested = post_comments(:nested)
     @comment_deep_nested = post_comments(:deep_nested)
 
@@ -15,9 +15,9 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create comment' do
     post post_comments_url(@post_one), params: {
       post_comment: {
-        post_id: @comment_with_comments.post_id,
-        user_id: @comment_with_comments.user_id,
-        content: @comment_with_comments.content
+        post_id: @comment_one.post_id,
+        user_id: @comment_one.user_id,
+        content: @comment_one.content
       }
     }
 
