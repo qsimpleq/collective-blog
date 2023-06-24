@@ -4,7 +4,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     get '/users/sign_in'
     @user_one = users(:one)
-    @post_one = posts(:one)
+    @post_with_comments = posts(:with_comments)
     @comment_one = post_comments(:one)
     @comment_nested = post_comments(:nested)
     @comment_deep_nested = post_comments(:deep_nested)
@@ -13,7 +13,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create comment' do
-    post post_comments_url(@post_one), params: {
+    post post_comments_url(@post_with_comments), params: {
       post_comment: {
         post_id: @comment_one.post_id,
         user_id: @comment_one.user_id,
@@ -22,6 +22,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_response :redirect
-    assert_redirected_to post_path(@post_one, anchor: "post_comment_#{PostComment.last.id}")
+    assert_redirected_to post_path(@post_with_comments, anchor: "post_comment_#{PostComment.last.id}")
   end
 end

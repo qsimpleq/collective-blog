@@ -21,10 +21,15 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+DEFAULTS: &DEFAULTS
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
 one:
-  email: one@example.com
-  encrypted_password: 'dsafi2h3u5h41234'
+  <<: *DEFAULTS
+  email: $LABEL@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 two:
-  email: two@example.com
-  encrypted_password: 'dsafi2h3uasdasf@5h41234'
+  <<: *DEFAULTS
+  email: $LABEL@email.com

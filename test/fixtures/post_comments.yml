@@ -25,16 +25,16 @@
 one:
   content: this is comment with comments
   user: one
-  post: one
+  post: with_comments
 
 nested:
   content: commented comment
   user: one
-  post: one
+  post: with_comments
   ancestry: /<%= ActiveRecord::FixtureSet.identify(:one) %>
 
 deep_nested:
   content: deep comment
   user: one
-  post: one
+  post: with_comments
   ancestry: /<%= [ActiveRecord::FixtureSet.identify(:one), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>
