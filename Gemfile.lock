@@ -243,6 +243,9 @@ GEM
       rubocop (~> 1.41)
     rubocop-minitest (0.31.0)
       rubocop (>= 1.39, < 2.0)
+    rubocop-performance (1.16.0)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
     rubocop-rails (2.18.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -347,6 +350,7 @@ DEPENDENCIES
   responders (~> 3.1)
   rubocop-capybara
   rubocop-minitest
+  rubocop-performance
   rubocop-rails
   rubocop-rake
   rubocop-slim

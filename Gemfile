@@ -88,6 +88,7 @@ group :development do
   gem 'highline', '3.0.0.pre.1'
   gem 'rubocop-capybara', require: false
   gem 'rubocop-minitest', require: false
+  gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rake', require: false
   gem 'rubocop-slim', require: false
