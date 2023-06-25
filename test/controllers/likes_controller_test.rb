@@ -1,13 +1,17 @@
 require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
+  include PostsHelper
+
   setup do
     get '/users/sign_in'
     @user_one = users(:one)
-    @user_two = users(:two)
     @post_one = posts(:one)
-    @post_two = posts(:two)
     @post_like_one = post_likes(:one)
+
+    @user_two = users(:two)
+    @post_two = posts(:two)
+
     sign_in(@user_one)
   end
 
@@ -25,5 +29,12 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :redirect
+  end
+
+  test 'should get destroy by another user' do
+    sign_in(@user_two)
+    assert_raise do
+      delete post_like_url(@post_one.id, @post_like_one.id)
+    end
   end
 end
