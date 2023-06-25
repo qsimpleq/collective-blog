@@ -14,17 +14,4 @@ article.col-md-12
       .small.text-muted
         span.me-2 => post.creator.email
         span =<> time_ago_in_words(post.created_at.to_time)
-      div
-        span.me-2 = post.post_likes.size
-        span
-          - if user_signed_in?
-            - if post_liked(post)
-              = link_to '', post_like_path(post.id, post_liked(post)), \
-                                          class: 'bi bi-hand-thumbs-up', \
-                                          data: { turbo_method: :delete }
-            - else
-              = link_to '', post_likes_path(post.id, user_id: current_user.id), \
-                                          class: 'bi bi-hand-thumbs-up', \
-                                          data: { turbo_method: :post }
-          - else
-            i.bi.bi-hand-thumbs-up
+      == render partial: 'likes/like', locals: {post: post}

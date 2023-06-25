@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = PostLike.find_by(id: params[:id], user_id: current_user.id)
+    like = post_liked(@post)
     like.destroy
     respond_with(like, location: request.referer)
   end
