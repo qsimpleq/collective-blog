@@ -1,3 +1,4 @@
+- require 'posts_helper'
 article.col-md-12
   .card.mb-3 id="#{dom_id post}"
     .card-header
@@ -17,8 +18,8 @@ article.col-md-12
         span.me-2 = post.post_likes.size
         span
           - if user_signed_in?
-            - if post.post_likes.any? && post.post_likes.find_by(user_id: current_user.id)
-              = link_to '', post_like_path(post.id, post.post_likes.find_by(user_id: current_user.id)), \
+            - if post_liked(post)
+              = link_to '', post_like_path(post.id, post_liked(post)), \
                                           class: 'bi bi-hand-thumbs-up', \
                                           data: { turbo_method: :delete }
             - else

@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_post, only: %i[create destroy]
+  include SharedPostsHelper
 
   def create
     like = PostLike.new(like_params)
@@ -8,7 +9,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = PostLike.find_by(like_params)
+    like = PostLike.find_by(id: params[:id], user_id: current_user.id)
     like.destroy
     respond_with(like, location: request.referer)
   end
@@ -16,7 +17,7 @@ class LikesController < ApplicationController
   private
 
   def like_params
-    { user_id: current_user.id }.merge(params.permit(:id, :post_id, :user_id))
+    { user_id: current_user.id }.merge(params.permit(:post_id, :user_id))
   end
 
   def set_post
