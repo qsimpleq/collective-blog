@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   responders :flash
+  before_action :authenticate_user!, only: %i[create destroy edit new update]
   before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts or /posts.json

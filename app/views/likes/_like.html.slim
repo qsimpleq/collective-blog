@@ -1,9 +1,10 @@
 div
   span.me-2 = post.post_likes.size
   span
+    - post_liked = post_liked(post)
     - if user_signed_in?
-      - if post_liked(post)
-        = link_to '', post_like_path(post.id, post_liked(post)), \
+      - if post_liked
+        = link_to '', post_like_path(post.id, post_liked), \
                                           class: 'bi bi-hand-thumbs-up', \
                                           data: { turbo_method: :delete }
       - else

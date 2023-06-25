@@ -14,4 +14,4 @@ article.col-md-12
       .small.text-muted
         span.me-2 => post.creator.email
         span =<> time_ago_in_words(post.created_at.to_time)
-      == render partial: 'likes/like', locals: {post: post}
+      == render partial: 'likes/like', locals: { post: }

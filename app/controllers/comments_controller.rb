@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
   responders :flash
+  before_action :authenticate_user!, only: %i[create]
+  def show
+    @comment = PostComment.new(params[:id])
+    respond_with(@comment)
+  end
+
   def create
     @comment = PostComment.new(comment_params)
     @comment.save

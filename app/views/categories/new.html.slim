@@ -1,8 +1,9 @@
-h1 = t('.title')
+- if user_signed_in?
+  h1 = t('.title')
 
-== render 'form', category: @category
+  == render 'form', category: @category
 
-br
+  br
 
-div
-  = link_to t('.back'), categories_path, class: 'btn btn-primary'
+  div
+    = link_to t('.back'), categories_path, class: 'btn btn-primary'
