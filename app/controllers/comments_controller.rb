@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  responders :flash
   before_action :authenticate_user!, only: %i[create]
   def show
     @comment = PostComment.new(params[:id])

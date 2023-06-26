@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  responders :flash
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_category, only: %i[show edit update destroy]
 

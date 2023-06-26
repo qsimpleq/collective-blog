@@ -31,6 +31,17 @@
 
 en:
   app_name: "Collective blog"
+  flash:
+    actions:
+      create:
+        notice: 'was successfully created.'
+        alert: 'could not be created.'
+      update:
+        notice: 'was successfully updated.'
+        alert: 'could not be updated.'
+      destroy:
+        notice: 'was successfully destroyed.'
+        alert: 'could not be destroyed.'
   activerecord:
     attributes:
       category:

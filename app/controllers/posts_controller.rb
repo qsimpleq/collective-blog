@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  responders :flash
   before_action :authenticate_user!, only: %i[create destroy edit new update]
   before_action :set_post, only: %i[show edit update destroy]
 
@@ -10,7 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @root_comments = @post.post_comments.roots.order('created_at DESC')
+    @root_comments = @post.post_comments.roots.order('created_at DESC') if @post.post_comments.any?
   end
 
   # GET /posts/new
@@ -24,27 +23,37 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    @post.save
-    respond_with(@post)
+
+    if @post.save
+      redirect_to post_path(@post), **tflash
+    else
+      respond_to new_post_path(@post), **tflash(:alert)
+    end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    @post.update(post_params)
-    respond_with(@post)
+    if @post.update(post_params)
+      redirect_to post_path(@post), **tflash
+    else
+      redirect_to edit_post_path(post_params), **tflash(:alert)
+    end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy
-    respond_with(@post, location: posts_url)
+    if @post.destroy
+      redirect_to posts_path, **tflash
+    else
+      redirect_to post_path(@post), **tflash(:alert)
+    end
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = Post.find(params[:id] || params[:post_id])
+    @post = Post.find(params[:post_id] || params[:id])
   end
 
   # Only allow a list of trusted parameters through.
