@@ -4,15 +4,26 @@ class LikesController < ApplicationController
   include SharedPostsHelper
 
   def create
-    like = PostLike.new(like_params)
-    like.save
-    respond_with(like, location: request.referer)
+    like = @post.post_likes.build(like_params)
+    respond_to do |format|
+      if like.save
+        format.html { redirect_to request.referer }
+        format.json { render json: {}, status: :created }
+      else
+        format.html { redirect_to request.referer, status: :unprocessable_entity, **tflash(:alert) }
+        format.json { render json: like.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     like = post_liked(@post)
     like.destroy
-    respond_with(like, location: request.referer)
+
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.json { head :no_content }
+    end
   end
 
   private
