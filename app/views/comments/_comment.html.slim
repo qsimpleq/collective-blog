@@ -9,21 +9,18 @@
   .card-body.border-0
     p.card-text = comment.content
   .card-footer.border-0
-    a.fs-6.text-decoration-underline.text-lowercase.collapsed[
-      type="button"
-      aria_controls="response_#{dom_id(comment)}"
-      data-bs-target="#response_#{dom_id(comment)}"
-      data-bs-toggle="collapse" href="#" style="" aria-expanded="false"
-    ] Comment
-    .ms-2.collapse[
-      id="response_#{dom_id(comment)}"
-    ]
-      - if user_signed_in?
+    - if user_signed_in?
+      a.fs-6.text-decoration-underline.text-lowercase.collapsed[
+        type="button"
+        aria_controls="response_#{dom_id(comment)}"
+        data-bs-target="#response_#{dom_id(comment)}"
+        data-bs-toggle="collapse" href="#" style="" aria-expanded="false"
+      ] Comment
+      .ms-2.collapse[
+        id="response_#{dom_id(comment)}"
+      ]
         - new_comment = comment.children.new(post_id: comment.post_id, user_id: current_user.id)
         = render partial: 'comments/form', locals: { comment: new_comment }
 
-    div[
-      class = "#{comment.has_parent? ? 'ms-4' : ''}"
-    ]
-      - if comment.has_children?
-        = render partial: 'comments/comment', collection: comment.children
+    - if comment.has_children?
+      div = render partial: 'comments/comment', collection: comment.children
