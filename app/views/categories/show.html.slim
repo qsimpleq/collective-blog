@@ -1,13 +1,4 @@
 p style="color: green" = notice
 
 == render @category
-
-- if user_signed_in?
-  div
-    => link_to t('.back'), categories_path, class: 'btn btn-primary'
-
-    => link_to t('.edit'), edit_category_path(@category), class: 'btn btn-primary'
-
-    => link_to t('.delete'), category_path(@category), \
-                             class: 'btn btn-danger', \
-                             data: { turbo_method: :delete, turbo_confirm: t('.delete_confirm') }
+== render 'category_navigation'
