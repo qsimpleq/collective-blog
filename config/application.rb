@@ -18,10 +18,6 @@ module RailsProject64
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures = false
 
-    # Configure default status codes for responding to errors and redirects.
-    config.responders.error_status = :unprocessable_entity
-    config.responders.redirect_status = 302
-
     config.after_initialize do
       ActionDispatch::Flash::FlashHash.include(FlashDecorator)
     end
