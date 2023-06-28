@@ -9,10 +9,10 @@
 #
 # Indexes
 #
-#  unique_name  (name) UNIQUE
+#  index_categories_on_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
   has_many :posts, dependent: :destroy
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, length: { minimum: 1, maximum: 50 }
 end
