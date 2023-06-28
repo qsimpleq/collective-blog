@@ -10,7 +10,7 @@ module FlashDecorator
     case key.to_sym
     when :notice
       original_flash_assign(:info, value)
-    when :alert
+    when :alert || :error
       original_flash_assign(:danger, value)
     else
       original_flash_assign(key, value)

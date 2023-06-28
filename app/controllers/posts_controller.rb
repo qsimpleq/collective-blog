@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @root_comments = @post.post_comments.roots.order('created_at DESC') if @post.post_comments.any?
+    @root_comments = @post.post_comments&.roots&.order('created_at DESC') || []
   end
 
   # GET /posts/new
@@ -23,29 +23,37 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
-    if @post.save
-      redirect_to post_path(@post), **tflash
-    else
-      respond_to new_post_path(@post), **tflash(:alert)
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to post_url(@post), tflash }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new, status: :unprocessable_entity, **tflash(:alert) }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    if @post.update(post_params)
-      redirect_to post_path(@post), **tflash
-    else
-      redirect_to edit_post_path(post_params), **tflash(:alert)
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to post_url(@post), tflash }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit, status: :unprocessable_entity, **tflash(:alert) }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    if @post.destroy
-      redirect_to posts_path, **tflash
-    else
-      redirect_to post_path(@post), **tflash(:alert)
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url, tflash }
+      format.json { head :no_content }
     end
   end
 
