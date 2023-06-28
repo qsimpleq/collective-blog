@@ -31,21 +31,42 @@
 
 en:
   app_name: "Collective blog"
+  action:
+    # This is controller actions
+    comment: Comment
+    create: Create
+    destroy: Delete
+    edit: Edit
+    index: Index
+    new: New
+    show: Show
+    update: Update
+
+    # This is common user actions
+    back: Back
+    confirm: Are you sure?
+    confirm_delete: Are you sure want to delete?
+    delete: Delete
+    save: Save
+
   flash:
     actions:
       create:
-        notice: 'was successfully created.'
         alert: 'could not be created.'
+        notice: 'was successfully created.'
       update:
-        notice: 'was successfully updated.'
         alert: 'could not be updated.'
+        notice: 'was successfully updated.'
       destroy:
-        notice: 'was successfully destroyed.'
         alert: 'could not be destroyed.'
+        notice: 'was successfully destroyed.'
+
   activerecord:
     attributes:
       category:
         name: Name
+      comment:
+        content: Content
       post:
         title: Title
         body: Body
@@ -54,9 +75,12 @@ en:
         body: Body
     models:
       category: Category
+      comment: Comment
+      like: Like
       post: Post
       post_comment: Comment
       post_like: Like
+
   layouts:
     shared:
       header:
@@ -67,21 +91,20 @@ en:
         new_post: New post
         sign_up: Sign up
         toggle_navigation: Toggle navigation
+
+  # views:
   categories:
     index:
-      title: Categories
       new: New category
+      title: Categories
     new:
+      back: Back
       title: New category
-      back: Back
     edit:
-      title: Edit category
       back: Back
+      title: Edit category
     show:
       title: Show category
-      back: Back
-      delete: Delete
-      delete_confirm: Are you sure
   comments:
     create:
       success: Comment was created.
@@ -93,12 +116,10 @@ en:
     index:
       title: Posts
     edit:
-      title: Edit Post
       show: Show post
+      title: Edit Post
     new:
       title: New Post
     show:
       body: Body
       comments: Comments
-      edit: Edit
-      delete: Delete
