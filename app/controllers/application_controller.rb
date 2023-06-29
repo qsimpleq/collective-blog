@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :check_request_format
 
-  private
-
   def check_request_format
     render request.format, status: :unsupported_media_type if ALLOWED_FORMATS.include?(request.format)
   end
@@ -31,19 +29,26 @@ class ApplicationController < ActionController::Base
     t("action.#{action}")
   end
 
-  def tflash(status = :notice, **options)
-    options[:only_translate] ||= false
-    options[:action] ||= action_name
-    options[:model] ||= controller_name.classify.downcase
+  def tflash(status = :notice, **params)
+    params = tflash_params_build(params)
 
-    translate = "#{t("activerecord.models.#{options[:model]}")} #{t("flash.actions.#{options[:action]}.#{status}")}"
-    translate += options[:add_message] if options[:add_message]
-    translate = options[:message] if options[:message]
+    translate = "#{t("activerecord.models.#{params[:model]}")} #{t("flash.actions.#{params[:action]}.#{status}")}"
+    translate += params[:add_message] if params[:add_message]
+    translate = params[:message] if params[:message]
 
-    if options[:only_translate]
+    if params[:only_translate]
       translate
     else
       { "#{status}": translate }
     end
+  end
+
+  private
+
+  def tflash_params_build(params)
+    params[:only_translate] ||= false
+    params[:action] ||= action_name
+    params[:model] ||= controller_name.classify.downcase
+    params
   end
 end
