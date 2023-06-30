@@ -1,22 +1,26 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!, only: %i[create destroy]
-  before_action :set_post, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[new create destroy]
+  before_action :set_post, only: %i[new create destroy]
   include SharedPostsHelper
 
   def create
     like = @post.post_likes.build(like_params)
     if like.save
-      redirect_to request.referer
+      redirect_to referer_or_post_url(@post)
     else
-      redirect_to request.referer, status: :unprocessable_entity, **tflash(:alert)
+      redirect_to referer_or_post_url(@post), status: :unprocessable_entity, **tflash(:alert)
     end
   end
 
   def destroy
     like = post_liked(@post)
-    like.destroy
+    if like
+      like.destroy
+      redirect_to referer_or_post_url(@post)
+    else
+      redirect_to referer_or_post_url(@post), status: :unprocessable_entity, **tflash(:alert)
+    end
 
-    redirect_to request.referer || posts_url
   end
 
   private
@@ -27,5 +31,9 @@ class LikesController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def referer_or_post_url(post)
+    request.referer || post_url(post)
   end
 end

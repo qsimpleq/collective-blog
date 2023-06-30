@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
   resources :posts do
-    resources :comments, only: %i[new create destroy]
+    resources :comments, only: %i[create destroy]
     resources :likes, only: %i[create destroy]
   end
 
