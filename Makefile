@@ -4,6 +4,7 @@ setup:
 	bundle install
 	yarn install
 	bundle exec rails assets:precompile
+	bundle exec rails db:create db:migrate
 
 dev:
 	bin/dev
@@ -35,4 +36,3 @@ git-precommit-check: setup test lint
 
 deploy-railway-app: git-precommit-check
 	railway up
-	railway run rails db:create db:migrate
