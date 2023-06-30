@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class PostsTest < ApplicationSystemTestCase
   setup do
-    @post_one = posts(:one)
+    @post_with_comments = posts(:one)
   end
 
   test 'visiting the index' do
@@ -15,10 +15,10 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on 'New post'
 
-    fill_in 'Body', with: @post_one.body
-    fill_in 'Category', with: @post_one.category_id
-    fill_in 'Creator', with: @post_one.creator_id
-    fill_in 'Title', with: @post_one.title
+    fill_in 'Body', with: @post_with_comments.body
+    fill_in 'Category', with: @post_with_comments.category_id
+    fill_in 'Creator', with: @post_with_comments.creator_id
+    fill_in 'Title', with: @post_with_comments.title
     click_on 'Create Post'
 
     assert_text 'Post was successfully created'
@@ -26,13 +26,13 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test 'should update Post' do
-    visit post_url(@post_one)
+    visit post_url(@post_with_comments)
     click_on 'Edit this post', match: :first
 
-    fill_in 'Body', with: @post_one.body
-    fill_in 'Category', with: @post_one.category_id
-    fill_in 'Creator', with: @post_one.creator_id
-    fill_in 'Title', with: @post_one.title
+    fill_in 'Body', with: @post_with_comments.body
+    fill_in 'Category', with: @post_with_comments.category_id
+    fill_in 'Creator', with: @post_with_comments.creator_id
+    fill_in 'Title', with: @post_with_comments.title
     click_on 'Update Post'
 
     assert_text 'Post was successfully updated'
@@ -40,7 +40,7 @@ class PostsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Post' do
-    visit post_url(@post_one)
+    visit post_url(@post_with_comments)
     click_on 'Destroy this post', match: :first
 
     assert_text 'Post was successfully destroyed'

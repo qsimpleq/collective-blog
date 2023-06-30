@@ -6,7 +6,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
     get '/users/sign_in'
     @user_one = users(:one)
-    @post_one = posts(:one)
+    @post_with_comments = posts(:one)
     @post_like_one = post_likes(:one)
 
     @user_two = users(:two)
@@ -25,7 +25,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get destroy' do
     assert_difference('PostLike.count', -1) do
-      delete post_like_url(@post_one.id, @post_like_one.id)
+      delete post_like_url(@post_with_comments.id, @post_like_one.id)
     end
 
     assert_response :redirect
