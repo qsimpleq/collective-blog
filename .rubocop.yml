@@ -27,11 +27,5 @@ Style/AsciiComments:
   Enabled: false
 Style/Documentation:
   Enabled: false
-### must be together {
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/RedundantFetchBlock:
-  Enabled: false
-### }
 Style/MethodCallWithArgsParentheses:
   EnforcedStyle: require_parentheses

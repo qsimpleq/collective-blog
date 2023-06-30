@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SharedPostsHelper
   def post_liked(post)
     return nil if !user_signed_in? || post.likes.empty?

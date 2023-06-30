@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def action_to_css_class_color(name = action_name)
     name = name.dup.downcase.to_s unless action_name == name
