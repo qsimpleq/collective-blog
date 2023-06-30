@@ -14,6 +14,7 @@ module RailsProject64
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.autoload_paths += %W(#{Rails.root}/lib)
 
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures = false
