@@ -5,11 +5,7 @@ class CommentsController < ApplicationController
   def show; end
 
   def create
-
-    cparams = comment_params
-    @comment = @post.comments.build(cparams)
-    @comment.user = current_user
-    @comment.ancestry ||= cparams[:parent_id]
+    create_build
 
     if @comment.save
       redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash
@@ -22,6 +18,13 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:post_comment).permit(%i[content parent_id])
+  end
+
+  def create_build
+    cparams = comment_params
+    @comment = @post.comments.build(cparams)
+    @comment.user = current_user
+    @comment.ancestry ||= cparams[:parent_id]
   end
 
   def set_post
