@@ -2,9 +2,8 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  = f.hidden_field :post_id
-  = f.hidden_field :user_id
-  = f.hidden_field :ancestry
+  - if comment.parent
+    = f.hidden_field :ancestry
 
   .form-inputs
     = f.input :content, label: false
