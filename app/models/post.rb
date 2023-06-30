@@ -28,4 +28,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
   validates :body, presence: true, length: { minimum: 3 }
+
+  alias likes post_likes
+  alias comments post_comments
 end

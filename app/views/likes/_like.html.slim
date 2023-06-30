@@ -1,5 +1,5 @@
 div
-  span.me-2 = post.post_likes.size
+  span.me-2 = post.likes.size
   span
     - post_liked = post_liked(post)
     - if user_signed_in?

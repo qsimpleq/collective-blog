@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   include SharedPostsHelper
 
   def create
-    like = @post.post_likes.build(like_params)
+    like = @post.likes.build(like_params)
     if like.save
       redirect_to referer_or_post_url(@post)
     else

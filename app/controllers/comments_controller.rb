@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def show; end
 
   def create
-    @comment = @post.post_comments.build(comment_params)
+    @comment = @post.comments.build(comment_params)
 
     if @comment.save
       redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash
