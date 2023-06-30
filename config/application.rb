@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -14,7 +16,7 @@ module RailsProject64
 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
-    config.autoload_paths += %W(#{Rails.root}/lib)
+    config.autoload_paths += %W[#{Rails.root.join('lib')}]
 
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures = false
