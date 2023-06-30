@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash
     else
-      render :new, status: :unprocessable_entity, **tflash(:alert)
+      redirect_to post_path(@comment.post_id), status: :unprocessable_entity, **tflash(:alert)
     end
   end
 
