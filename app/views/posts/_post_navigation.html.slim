@@ -1,4 +1,4 @@
-div.mt-3
+.mt-3
   = link_to t('action.back'), helper_back_path(default_path: root_path), class: 'btn btn-primary me-1'
 
   - if user_signed_in? && action_name == 'show'
