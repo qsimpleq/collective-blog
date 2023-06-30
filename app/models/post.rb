@@ -18,11 +18,10 @@
 # Foreign Keys
 #
 #  category_id  (category_id => categories.id)
-#  creator_id   (creator_id => users.id)
 #
 class Post < ApplicationRecord
   belongs_to :category
-  belongs_to :creator, class_name: 'User'
+  belongs_to :creator, class_name: 'User', optional: true
   has_many :post_comments, dependent: :destroy
   has_many :post_likes, dependent: :destroy
 

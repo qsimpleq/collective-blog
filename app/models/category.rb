@@ -9,7 +9,7 @@
 #
 # Indexes
 #
-#  index_categories_on_name  (name) UNIQUE
+#  unique_name  (name) UNIQUE
 #
 class Category < ApplicationRecord
   has_many :posts, dependent: :destroy

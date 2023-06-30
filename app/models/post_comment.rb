@@ -13,9 +13,7 @@
 # Indexes
 #
 #  index_post_comments_on_ancestry  (ancestry)
-#  index_post_comments_on_post      ("post")
 #  index_post_comments_on_post_id   (post_id)
-#  index_post_comments_on_user      ("user")
 #  index_post_comments_on_user_id   (user_id)
 #
 # Foreign Keys

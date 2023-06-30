@@ -18,7 +18,6 @@
 # Foreign Keys
 #
 #  category_id  (category_id => categories.id)
-#  creator_id   (creator_id => users.id)
 #
 require 'test_helper'
 
