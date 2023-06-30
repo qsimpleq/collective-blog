@@ -9,7 +9,6 @@ class LikesController < ApplicationController
       redirect_to referer_or_post_url(@post)
     else
       redirect_to referer_or_post_url(@post), **tflash(:alert)
-      # redirect_to referer_or_post_url(@post), status: :unprocessable_entity, **tflash(:alert)
     end
   end
 
@@ -20,7 +19,6 @@ class LikesController < ApplicationController
       redirect_to referer_or_post_url(@post)
     else
       redirect_to referer_or_post_url(@post), **tflash(:alert)
-      # redirect_to referer_or_post_url(@post), status: :unprocessable_entity, **tflash(:alert)
     end
   end
 

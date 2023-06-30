@@ -27,8 +27,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_url(@post), tflash
     else
-      redirect_to new_post_url, **tflash(:alert)
-      # render :new, status: :unprocessable_entity, **tflash(:alert)
+      render :new, status: :found, **tflash(:alert)
     end
   end
 
@@ -37,7 +36,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_url(@post), tflash
     else
-      render :edit, status: :unprocessable_entity, **tflash(:alert)
+      render :edit, status: :found, **tflash(:alert)
     end
   end
 
