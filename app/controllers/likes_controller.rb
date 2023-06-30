@@ -5,14 +5,10 @@ class LikesController < ApplicationController
 
   def create
     like = @post.post_likes.build(like_params)
-    respond_to do |format|
-      if like.save
-        format.html { redirect_to request.referer }
-        format.json { render json: {}, status: :created }
-      else
-        format.html { redirect_to request.referer, status: :unprocessable_entity, **tflash(:alert) }
-        format.json { render json: like.errors, status: :unprocessable_entity }
-      end
+    if like.save
+      redirect_to request.referer
+    else
+      redirect_to request.referer, status: :unprocessable_entity, **tflash(:alert)
     end
   end
 
@@ -20,10 +16,7 @@ class LikesController < ApplicationController
     like = post_liked(@post)
     like.destroy
 
-    respond_to do |format|
-      format.html { redirect_to request.referer }
-      format.json { head :no_content }
-    end
+    redirect_to request.referer || posts_url
   end
 
   private

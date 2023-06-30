@@ -7,14 +7,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.post_comments.build(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new, status: :unprocessable_entity, **tflash(:alert) }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash
+    else
+      render :new, status: :unprocessable_entity, **tflash(:alert)
     end
   end
 
