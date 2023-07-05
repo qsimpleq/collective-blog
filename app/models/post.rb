@@ -22,14 +22,11 @@
 #  category_id  (category_id => categories.id)
 #
 class Post < ApplicationRecord
-  belongs_to :category
+  belongs_to :category, inverse_of: :posts
   belongs_to :creator, class_name: 'User', optional: true
-  has_many :post_comments, dependent: :destroy
-  has_many :post_likes, dependent: :destroy
+  has_many :comments, class_name: 'PostComment', dependent: :destroy
+  has_many :likes, class_name: 'PostLike', dependent: :destroy
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 }
   validates :body, presence: true, length: { minimum: 3 }
-
-  alias likes post_likes
-  alias comments post_comments
 end
