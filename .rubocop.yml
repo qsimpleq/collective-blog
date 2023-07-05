@@ -3,7 +3,7 @@ require:
   - rubocop-minitest
   - rubocop-performance
   - rubocop-rails
-#  - rubocop-rake
+  - rubocop-rake
   - rubocop-slim
 
 AllCops:
@@ -12,6 +12,7 @@ AllCops:
   Exclude:
     - 'bin/{bundle,dev,rails,rake,setup}'
     - 'db/schema.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
     - 'lib/templates/slim/scaffold/_form.html.slim'
     - 'script/**/*'
 
@@ -23,6 +24,8 @@ Layout/LineLength:
   AllowedPatterns:
     - '\s*# .+'
 Metrics/MethodLength:
+  Enabled: false
+Rails/UniqueValidationWithoutIndex:
   Enabled: false
 Style/AsciiComments:
   Enabled: false
