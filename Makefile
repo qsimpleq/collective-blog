@@ -1,10 +1,9 @@
 .PHONY: setup deploy-railway-app dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-lint lint-test
 
 setup:
-	bundle install
+	bundle install --jobs 4 --retry 3
 	yarn install
-	bundle exec rails assets:precompile
-	bundle exec rails db:create db:migrate
+	bundle exec rails db:create db:migrate db:seed assets:precompile
 
 dev:
 	bin/dev
@@ -34,5 +33,5 @@ test-lint: test lint
 
 git-precommit-check: setup test lint
 
-deploy-railway-app: git-precommit-check
-	railway up
+deploy-dokku: git-precommit-check
+	git push dokku main

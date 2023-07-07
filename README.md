@@ -3,4 +3,4 @@
 [![CI](https://github.com/qsimpleq/rails-project-64/actions/workflows/ci.yml/badge.svg)](https://github.com/qsimpleq/rails-project-64/actions/workflows/ci.yml)
 
 
-Link to service: [rails-project-64](https://rails-project-64-production-c493.up.railway.app)
+Link to service: [example-collective-blog](https://example-collective-blog.qsimpleq.su)
