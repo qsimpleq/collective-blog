@@ -6,7 +6,6 @@
     = f.input :title
     = f.input :body
     = f.association :category
-    = f.association :creator, as: :hidden, input_html: { value: current_user.id }
 
   .form-actions
     = f.button :submit, class: "btn-#{action_to_css_class_color}"

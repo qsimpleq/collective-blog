@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(creator: current_user))
 
     if @post.save
       redirect_to post_url(@post), tflash
@@ -58,6 +58,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :body, :category_id, :creator_id)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 end
