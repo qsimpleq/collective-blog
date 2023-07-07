@@ -1,8 +1,0 @@
-h1 = t('.title')
-
-- if user_signed_in?
-  p = link_to t('.new'), new_category_path, class: 'btn btn-success'
-  hr
-#categories
-  - @categories.each do |category|
-    == render category

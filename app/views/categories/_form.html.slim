@@ -1,9 +1,0 @@
-= simple_form_for(@category) do |f|
-  = f.error_notification role: 'alert'
-  = f.error_notification role: 'alert', message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :name, required: true
-
-  .form-actions
-    = f.button :submit, taction, class: "btn-#{action_to_css_class_color}"
