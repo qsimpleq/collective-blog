@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(creator: current_user))
 
     if @post.save
-      redirect_to post_url(@post), tflash
+      redirect_to @post, tflash
     else
       render :new, status: :found, **tflash(:alert)
     end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     if @post.update(post_params)
-      redirect_to post_url(@post), tflash
+      redirect_to @post, tflash
     else
       render :edit, status: :found, **tflash(:alert)
     end

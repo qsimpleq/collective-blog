@@ -35,6 +35,6 @@ class LikesController < ApplicationController
   end
 
   def referer_or_post_url(post)
-    request.referer || post_url(post)
+    request.referer || post
   end
 end
