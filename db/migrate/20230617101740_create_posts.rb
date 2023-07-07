@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :body
       t.references :category, foreign_key: true, null: false, index: true
-      t.references :posts, :creator, index: true, foreign_key: { to_table: :users }
+      t.references :creator, class_name: :user, index: true
 
       t.timestamps
     end
