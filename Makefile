@@ -35,3 +35,6 @@ git-precommit-check: setup test lint
 
 deploy-dokku: git-precommit-check
 	git push dokku main
+
+deploy: deploy-dokku
+	git push origin main
