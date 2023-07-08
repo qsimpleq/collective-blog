@@ -10,9 +10,10 @@ class CommentsController < ApplicationController
     create_build
 
     if @comment.save
-      redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), tflash
+      redirect_to post_path(@comment.post_id, anchor: "post_comment_#{@comment.id}"), notice: t('.success')
     else
-      redirect_to post_path(@comment.post_id), **tflash(:alert)
+      flash[:error] = t('.error')
+      redirect_to post_path(@comment.post_id)
     end
   end
 

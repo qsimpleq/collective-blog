@@ -9,10 +9,10 @@ module FlashDecorator
   end
 
   def decorated_flash_assign(key, value)
-    case key.to_sym
-    when :notice
+    k = key.to_sym
+    if k == :notice
       original_flash_assign(:info, value)
-    when :alert || :error
+    elsif k.in?(:alert, :error)
       original_flash_assign(:danger, value)
     else
       original_flash_assign(key, value)

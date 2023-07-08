@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include AppI18n
-
-  helper_method %i[helper_back_path taction tflash]
+  helper_method %i[helper_back_path]
 
   def helper_back_path(**params)
     params[:action_name] ||= action_name

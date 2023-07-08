@@ -27,26 +27,29 @@ class PostsController < ApplicationController
     @post = Post.new(post_params.merge(creator: current_user))
 
     if @post.save
-      redirect_to @post, tflash
+      redirect_to @post, notice: t('.success')
     else
-      render :new, status: :found, **tflash(:alert)
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     if @post.update(post_params)
-      redirect_to @post, tflash
+      redirect_to @post, notice: t('.success')
     else
-      render :edit, status: :found, **tflash(:alert)
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy
-
-    redirect_to posts_url, tflash
+    if @post.destroy
+      redirect_to posts_url, notice: t('.success')
+    else
+      flash[:error] = t('.error')
+      render @post, status: :unprocessable_entity
+    end
   end
 
   private

@@ -32,7 +32,7 @@
 en:
   app_name: "Collective blog"
   action:
-    # This is controller actions
+    # This is common controller actions
     comment: Comment
     create: Create
     destroy: Delete
@@ -48,18 +48,6 @@ en:
     confirm_delete: Are you sure want to delete?
     delete: Delete
     save: Save
-
-  flash:
-    actions:
-      create:
-        alert: 'could not be created.'
-        notice: 'was successfully created.'
-      update:
-        alert: 'could not be updated.'
-        notice: 'was successfully updated.'
-      destroy:
-        alert: 'could not be destroyed.'
-        notice: 'was successfully destroyed.'
 
   activerecord:
     attributes:
@@ -107,19 +95,40 @@ en:
       title: Show category
   comments:
     create:
+      error: Comment could not be created.
       success: Comment was created.
+    destroy:
+      error: Comment could not be destroyed.
+      success: Comment was destroyed.
+  likes:
+    create:
+      error: Like could not be created.
+      success: Like was created.
+    destroy:
+      error: Like could not be destroyed.
+      success: Like was destroyed.
   posts:
     post_header:
       title: All posts
     post:
       link: Post link
+    # actions
     index:
       title: Posts
-    edit:
-      show: Show post
-      title: Edit Post
-    new:
-      title: New Post
     show:
       body: Body
       comments: Comments
+    new:
+      title: New Post
+    create:
+      error: Post could not be created.
+      success: Post was successfully created.
+    edit:
+      show: Show post
+      title: Edit Post
+    update:
+      error: Post could not be updated.
+      success: Post was successfully updated.
+    destroy:
+      error: Post could not be destroyed.
+      success: Post was successfully destroyed.
