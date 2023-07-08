@@ -1,0 +1,31 @@
+with_comments_one:
+  content: this is comment 1
+  user: one
+  post: with_comments
+
+with_comments_two:
+  content: this is comment 2
+  user: two
+  post: with_comments
+
+with_tree_comments:
+  content: this is comment with comments
+  user: one
+  post: with_tree_comments
+
+with_tree_comments_two:
+  content: comment 2
+  user: two
+  post: with_tree_comments
+
+with_tree_comments_nested:
+  content: nested comment
+  user: three
+  post: with_tree_comments
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:with_tree_comments) %>/
+
+with_tree_comments_deep_nested:
+  content: deep nested comment
+  user: one
+  post: with_comments
+  ancestry: /<%= [ActiveRecord::FixtureSet.identify(:with_tree_comments), ActiveRecord::FixtureSet.identify(:with_tree_comments_nested)].join('/') %>/

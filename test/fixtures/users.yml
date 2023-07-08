@@ -28,7 +28,6 @@ DEFAULTS: &DEFAULTS
 one:
   <<: *DEFAULTS
   email: $LABEL@email.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 two:
   <<: *DEFAULTS

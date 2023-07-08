@@ -1,0 +1,19 @@
+---
+DEFAULTS: &DEFAULTS
+  name: $LABEL
+one:
+  <<: *DEFAULTS
+two:
+  <<: *DEFAULTS
+three:
+  <<: *DEFAULTS
+books:
+  <<: *DEFAULTS
+javascript:
+  <<: *DEFAULTS
+perl:
+  <<: *DEFAULTS
+ruby:
+  <<: *DEFAULTS
+vacations:
+  <<: *DEFAULTS

@@ -8,8 +8,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-require 'faker'
+require 'active_record/fixtures'
 
-1.upto(10) do |_i|
-  Category.create name: Faker::Hacker.adjective
+seeds_path = Rails.root.join('db/seeds')
+fixtures = %w[
+  categories
+  users
+  posts
+  post_likes
+  post_comments
+]
+ActiveRecord::Base.transaction do
+  fixtures.each { ActiveRecord::FixtureSet.create_fixtures(seeds_path, _1) }
 end
