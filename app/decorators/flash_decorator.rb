@@ -12,7 +12,7 @@ module FlashDecorator
     k = key.to_sym
     if k == :notice
       original_flash_assign(:info, value)
-    elsif k.in?(:alert, :error)
+    elsif k.in?(%i[alert error])
       original_flash_assign(:danger, value)
     else
       original_flash_assign(key, value)
