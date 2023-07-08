@@ -11,7 +11,7 @@ class LikesController < ApplicationController
       redirect_to referer_or_post_url(@post)
     else
       flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
+      redirect_to referer_or_post_url(@post), status: :found
     end
   end
 
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
       redirect_to referer_or_post_url(@post)
     else
       flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
+      redirect_to referer_or_post_url(@post), status: :found
     end
   end
 
