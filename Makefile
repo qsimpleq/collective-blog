@@ -3,7 +3,12 @@
 setup:
 	bundle install --jobs 4 --retry 3
 	yarn install
-	bundle exec rails db:create db:migrate db:seed assets:precompile
+	bundle exec rails db:create db:migrate
+
+setup-first-time:
+	bundle install --jobs 4 --retry 3
+	yarn install
+	bundle exec rails db:drop db:create db:migrate db:seed assets:precompile
 
 dev:
 	bin/dev
