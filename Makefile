@@ -18,6 +18,9 @@ erb2slim:
 
 lint: lint-rubocop lint-templates
 
+lint-i18n:
+	bundle exec i18n-tasks health
+
 lint-rubocop:
 	bundle exec rubocop
 
@@ -36,7 +39,7 @@ test:
 lint-test: lint test
 test-lint: test lint
 
-git-precommit-check: setup test lint
+git-precommit-check: setup test lint lint-i18n
 
 deploy-dokku: git-precommit-check
 	git push dokku main

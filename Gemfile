@@ -84,8 +84,7 @@ end
 group :development do
   # Adds model attributes/routes to top of model files/routes file
   gem 'annotate'
-
-  gem 'highline', '3.0.0.pre.1'
+  gem 'highline'
   gem 'rubocop-capybara', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
