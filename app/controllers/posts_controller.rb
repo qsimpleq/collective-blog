@@ -6,12 +6,16 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:creator).order(created_at: :desc)
+    @posts = Post.where.not(creator_id: nil)
+                 .includes(:category, :creator)
+                 .order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    @root_comments = @post.comments&.roots&.order(created_at: :desc) || []
+    @comments = @post.comments.where.not(user_id: nil)
+                     .includes(:user)
+                     .arrange(order: :created_at)
   end
 
   # GET /posts/new
@@ -56,7 +60,7 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = Post.find(params[:post_id] || params[:id])
+    @post = Post.includes(:category, :creator).find(params[:post_id] || params[:id])
   end
 
   # Only allow a list of trusted parameters through.

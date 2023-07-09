@@ -3,7 +3,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_post, only: %i[create destroy]
-  include SharedPostsHelper
 
   def create
     like = @post.likes.build(like_params)
@@ -16,7 +15,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = post_liked(@post)
+    like = @post.liked(current_user)
     if like
       like.destroy
       redirect_to referer_or_post_url(@post)
@@ -29,7 +28,7 @@ class LikesController < ApplicationController
   private
 
   def like_params
-    { user_id: current_user.id }.merge(params.permit(:post_id, :user_id))
+    { user_id: current_user.id }.merge(params.permit(:post_id))
   end
 
   def set_post

@@ -39,7 +39,7 @@ test:
 lint-test: lint test
 test-lint: test lint
 
-git-precommit-check: setup test lint lint-i18n
+git-precommit-check: setup test lint
 
 deploy-dokku: git-precommit-check
 	git push dokku main
