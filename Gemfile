@@ -75,6 +75,8 @@ group :development, :test do
 
   gem 'html2slim', github: 'slim-template/html2slim'
 
+  gem 'i18n-tasks'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
 end
