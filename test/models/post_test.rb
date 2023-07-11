@@ -30,8 +30,15 @@ class PostTest < ActiveSupport::TestCase
 
     @post_like_one = post_likes(:one)
     @title_valid = 'category'
-    @title_too_long = 'a' * 101
-    @title_too_short = ''
+
+    @title_too_long = 'a' * (Post::VALIDATORS[:title][:length][:maximum] + 1)
+
+    title_too_short_value = Post::VALIDATORS[:body][:length][:minimum]
+    @title_too_short = title_too_short_value.zero? ? '' : 'a' * (title_too_short_value - 1)
+
+    body_too_short_value = Post::VALIDATORS[:body][:length][:minimum]
+    @body_too_short = body_too_short_value.zero? ? '' : 'a' * (body_too_short_value - 1)
+
     @user_one = users(:one)
     @user_two = users(:two)
 
@@ -57,10 +64,10 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'invalid body' do
-    assert_not_predicate Post.new(@post_data.merge(body: @title_too_short)), :valid?
+    assert_not_predicate Post.new(@post_data.merge(body: @body_too_short)), :valid?
   end
 
-  test "post liked by user" do
+  test 'post liked by user' do
     assert @post_one.liked(@user_one)
     assert_not @post_one.liked(@user_two)
   end
