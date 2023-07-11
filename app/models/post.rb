@@ -32,7 +32,7 @@ class Post < ApplicationRecord
   validates :body, presence: true, length: { minimum: 3 }
 
   def liked(user)
-    return nil if !user || likes.empty?
+    return nil unless user
 
     @liked ||= likes.find_by(user_id: user.id)
   end
