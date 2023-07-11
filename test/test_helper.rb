@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
+if ENV['RAILS_ENV'] == 'test' && ENV['COVERAGE']
+  require 'simplecov'
+  SimpleCov.start 'rails'
+end
+
 require_relative '../config/environment'
 require 'rails/test_help'
 
