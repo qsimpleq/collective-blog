@@ -20,4 +20,5 @@ fixtures = %w[
 ]
 ActiveRecord::Base.transaction do
   fixtures.each { ActiveRecord::FixtureSet.create_fixtures(seeds_path, _1) }
+  PostLike.all.group(:post_id).pluck(:post_id).each { Post.reset_counters(_1, :likes) }
 end
