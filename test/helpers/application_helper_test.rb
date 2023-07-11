@@ -11,7 +11,7 @@ class ApplicationHelperTest < ActionView::TestCase
       update: 'success',
       show: 'primary',
       index: 'primary',
-      destroy: 'danger',
+      destroy: 'warning',
       other: 'default'
     }
 
