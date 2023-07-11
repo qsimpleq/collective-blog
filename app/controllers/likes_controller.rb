@@ -15,8 +15,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = @post.liked(current_user)
-    if like.destroy
+    if @post.liked(current_user)&.destroy
       redirect_to referer_or_post_url(@post)
     else
       flash[:error] = t('.error')
