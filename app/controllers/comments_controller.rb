@@ -24,10 +24,8 @@ class CommentsController < ApplicationController
   end
 
   def create_build
-    cparams = comment_params
-    @comment = @post.comments.build(cparams)
+    @comment = @post.comments.build(comment_params)
     @comment.user = current_user
-    @comment.ancestry ||= cparams[:parent_id]
   end
 
   def set_post

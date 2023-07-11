@@ -1,11 +1,11 @@
 - require 'posts_helper'
 article.col-md-12
-  .card.mb-3 id="#{dom_id post}"
+  .card.mb-3
     .card-header
       - if action_name == 'index'
         => link_to post.title.capitalize, post, 'aria-label': t('.link')
-        |/
-        =< post.category.name.to_s
+        span.ms-2.me-2 = '/'
+        = post.category.name.to_s
       - else
         span[aria-label="#{t('.link')}"] = post.title.capitalize
     .card-body

@@ -10,18 +10,17 @@ class LikesController < ApplicationController
       redirect_to referer_or_post_url(@post)
     else
       flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :found
+      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
     end
   end
 
   def destroy
     like = @post.liked(current_user)
-    if like
-      like.destroy
+    if like&.destroy
       redirect_to referer_or_post_url(@post)
     else
       flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :found
+      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
     end
   end
 
