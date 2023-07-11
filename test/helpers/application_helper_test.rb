@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
-  test "check action_to_css_class_color" do
-    action = {
+  test 'check action_to_css_class_color' do
+    actions = {
       new: 'success',
       create: 'success',
       edit: 'success',
@@ -13,8 +15,8 @@ class ApplicationHelperTest < ActionView::TestCase
       other: 'default'
     }
 
-    action.each do |action, color|
-      assert action_to_css_class_color(action), color
+    actions.each_pair do |action, color|
+      assert_equal(action_to_css_class_color(action), color)
     end
   end
 
