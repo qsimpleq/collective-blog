@@ -1,4 +1,4 @@
-.PHONY: setup deploy-railway-app dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-lint lint-test
+.PHONY: setup setup-first-time deploy-railway-app dev erb2slim git-precommit-check lint lint-rubocop lint-templates test test-coverage test-lint lint-test
 
 setup:
 	bundle install --jobs 4 --retry 3
