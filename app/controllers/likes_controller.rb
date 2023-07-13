@@ -6,21 +6,14 @@ class LikesController < ApplicationController
 
   def create
     like = @post.likes.build(like_params)
-    if like.save
-      redirect_to referer_or_post_url(@post)
-    else
-      flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
-    end
+    flash[:error] = t('.error') unless like.save
+
+    redirect_to referer_or_post_url(@post)
   end
 
   def destroy
-    if @post.liked(current_user)&.destroy
-      redirect_to referer_or_post_url(@post)
-    else
-      flash[:error] = t('.error')
-      redirect_to referer_or_post_url(@post), status: :unprocessable_entity
-    end
+    flash[:error] = t('.error') unless @post.liked(current_user)&.destroy
+    redirect_to referer_or_post_url(@post)
   end
 
   private
