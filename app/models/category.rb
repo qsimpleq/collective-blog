@@ -16,7 +16,5 @@
 class Category < ApplicationRecord
   has_many :posts, dependent: :destroy
 
-  VALIDATORS = { name: { presence: true, uniqueness: true, length: { minimum: 1, maximum: 50 } } }.freeze
-
-  validates :name, VALIDATORS[:name]
+  validates :name, presence: true, uniqueness: true, length: { minimum: 1, maximum: 50 }
 end

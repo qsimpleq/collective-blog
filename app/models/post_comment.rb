@@ -28,7 +28,5 @@ class PostComment < ApplicationRecord
   belongs_to :post
   has_ancestry
 
-  VALIDATORS = { content: { presence: true, length: { minimum: 1 } } }.freeze
-
-  validates :content, **VALIDATORS[:content]
+  validates :content, presence: true, length: { minimum: 1 }
 end

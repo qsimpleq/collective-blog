@@ -31,12 +31,12 @@ class PostTest < ActiveSupport::TestCase
     @post_like_one = post_likes(:one)
     @title_valid = 'category'
 
-    @title_too_long = 'a' * (Post::VALIDATORS[:title][:length][:maximum] + 1)
+    @title_too_long = 'a' * (Post.validator_find(:title, :length).options[:maximum] + 1)
 
-    title_too_short_value = Post::VALIDATORS[:body][:length][:minimum]
+    title_too_short_value = Post.validator_find(:title, :length).options[:minimum]
     @title_too_short = title_too_short_value.zero? ? '' : 'a' * (title_too_short_value - 1)
 
-    body_too_short_value = Post::VALIDATORS[:body][:length][:minimum]
+    body_too_short_value = Post.validator_find(:body, :length).options[:minimum]
     @body_too_short = body_too_short_value.zero? ? '' : 'a' * (body_too_short_value - 1)
 
     @user_one = users(:one)
